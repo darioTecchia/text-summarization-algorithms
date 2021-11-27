@@ -35,8 +35,8 @@ dataset['lsa'] = LSA().multi_apply(original_texts, verbose=True)
 from extractive.luhn.luhn import Luhn
 dataset['luhn'] = Luhn().multi_apply(original_texts, verbose=True)
 
-# executing LUHN
-from extractive.textrank.textrank import TextRank
-dataset['textrank'] = TextRank().multi_apply(original_texts, verbose=True)
+# executing textrank
+# from extractive.textrank.textrank import TextRank
+# dataset['textrank'] = TextRank().multi_apply(original_texts, verbose=True)
 
 dataset.to_csv('../outputs/extractive.summaries.csv', index=False)
