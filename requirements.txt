@@ -1,0 +1,13 @@
+gensim
+sumy
+transformers
+torch
+torchvision
+sentencepiece
+nltk
+numpy
+networkx
+rouge
+bert_score
+bert-extractive-summarizer
+pandas
