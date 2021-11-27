@@ -5,13 +5,15 @@ from bert_score import score
 from transformers import logging
 logging.set_verbosity_error()
 
-dataset = pandas.read_csv("../datasets/reviews.csv").truncate(after=4999)
+import sys
+sys.path.append('..')
+
+import config
+
+dataset = pandas.read_csv("../datasets/reviews.csv").truncate(after=config.SUMMARIES_CHUNK - 1)
 
 original_texts = dataset['original_texts'].fillna(" ").to_list()
 human_summaries = dataset['human_summaries'].fillna(" ").to_list()
-
-import sys
-sys.path.append('..')
 
 # executing BERT
 from abstractive.BART.BART import BART
