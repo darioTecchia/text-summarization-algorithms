@@ -5,12 +5,7 @@ from gensim.summarization import summarize
 class TextRank:
 
     def apply(self, original_text="", ratio=0.1, word_count=30):
-        # Summarization when both ratio & word count is given
-        # In case both are mentioned, then the summarize function ignores the ratio. So, only the word_count parameter is taken.
-        try:
-            return summarize(original_text, ratio, word_count)
-        finally:
-            return ""
+        return summarize(original_text, ratio, word_count)
 
     def multi_apply(self, original_texts = [], verbose = False):
         summaries = []
