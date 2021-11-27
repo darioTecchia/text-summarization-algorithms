@@ -39,4 +39,4 @@ dataset['luhn'] = Luhn().multi_apply(original_texts, verbose=True)
 from extractive.textrank.textrank import TextRank
 dataset['textrank'] = TextRank().multi_apply(original_texts, verbose=True)
 
-dataset.to_csv('../outputs/extractive.csv', index=False)
+dataset.to_csv('../outputs/extractive.summaries.csv', index=False)

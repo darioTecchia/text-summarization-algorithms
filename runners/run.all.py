@@ -47,4 +47,4 @@ dataset['bart'] = BART().multi_apply(original_texts, verbose=True)
 from abstractive.T5.T5 import T5
 dataset['kl_sum'] = T5().multi_apply(original_texts, verbose=True)
 
-dataset.to_csv('../outputs/all.csv', index=False)
+dataset.to_csv('../outputs/all.summaries.csv', index=False)
