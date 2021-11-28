@@ -23,6 +23,6 @@ The **runner** folder contains all scripts that apply the summary algorithms to 
 ## Usage
 First of all install all the libraries required by python with the command `pip3 install -r requirements.txt`.
 
-Download the dataset from here: **AGGIUNGI LINK QUI**.
+Download the dataset from [here](https://drive.google.com/file/d/1iAcqK6sOK_kMYJn4kptVJA2QpTJoqk--/view?usp=sharing) and move it into the **datasets** folder.
 
 After all, launch the scripts contained into the folders.
