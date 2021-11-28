@@ -10,8 +10,8 @@ Inside the **extractive** and **abstract** folders are all the extractive and ab
 The **datasets** folder contains all datasets used during the experiments (csv files must be downloaded separately).
 
 The **evaluation** folder contains the scripts that apply the evaluation algorithms to the machine-generated summaries. At the moment, there are two scripts:
-- *evaluation.bert.py*: run the bert evaluations for each computer-obtained summary
-- *evaluation.rouge.py*: run the rouge evaluations for each computer-obtained summary
+- `evaluation.bert.py`: run the bert evaluations for each computer-obtained summary
+- `evaluation.rouge.py`: run the rouge evaluations for each computer-obtained summary
 
 The **outputs** folder is the outsource folder that contains the csv files obtained with the scripts.
 
@@ -21,7 +21,7 @@ The **runner** folder contains all scripts that apply the summary algorithms to 
 - *run.all*: run all the algorithms 
 
 ## Usage
-First of all install all the libraries required by python with the command *pip3 install -r requirements.txt*.
+First of all install all the libraries required by python with the command `pip3 install -r requirements.txt`.
 
 Download the dataset from here: **AGGIUNGI LINK QUI**.
 
