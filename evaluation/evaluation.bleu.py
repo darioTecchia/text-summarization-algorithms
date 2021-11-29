@@ -25,7 +25,7 @@ for row in dataset.to_dict('records'):
     for algorithm in config.SUMMARIZATION_ALGORITHMS:
         print('evalutating ' + algorithm)
         summary = row[algorithm]
-        bleu_score = sentence_bleu(human_summaries, summary)
+        bleu_score = sentence_bleu([human_summary.split()], summary.split())
         results[algorithm + '_bleu'].append(bleu_score)
 
 print(results)
