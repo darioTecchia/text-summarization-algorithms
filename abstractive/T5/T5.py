@@ -10,7 +10,7 @@ class T5:
         self.my_model = T5ForConditionalGeneration.from_pretrained('t5-small')
         self.tokenizer = T5Tokenizer.from_pretrained('t5-small')
 
-    def apply(self, original_text = "", return_tensors = 'pt', max_length = 512):
+    def apply(self, original_text = "", return_tensors = 'pt', max_length = 600):
         text = "summarize:" + original_text
         input_ids = self.tokenizer.encode(text, return_tensors = return_tensors, max_length = max_length, truncation=True)
         summary_ids = self.my_model.generate(input_ids)
@@ -21,5 +21,5 @@ class T5:
         for index, original_text in enumerate(original_texts):
             if(verbose):
                 print("Computing T5 summaries {:2.2f}".format(float(index) * 100.0 / float(len(original_texts))) + " %")
-            summaries.append(self.apply(original_text, 'pt', 512))
+            summaries.append(self.apply(original_text))
         return summaries

@@ -8,8 +8,8 @@ class BERT:
         # Instantiating the KLSummarizer
         self.model = Summarizer()
 
-    def apply(self, original_text = ""):
-        return self.model(original_text)
+    def apply(self, original_text = "", max_length=600):
+        return self.model(original_text, max_length=max_length)
 
     def multi_apply(self, original_texts = [], verbose = False):
         summaries = []

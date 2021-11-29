@@ -11,10 +11,10 @@ class LSA:
     def __init__(self):
         self.lsa_summarizer = LsaSummarizer()
 
-    def apply(self, original_text=""):
+    def apply(self, original_text="", sentences_count = 4):
         summary = ""
         parser = PlaintextParser.from_string(original_text, Tokenizer('english'))
-        for sentence in self.lsa_summarizer(parser.document, 3):
+        for sentence in self.lsa_summarizer(parser.document, sentences_count = sentences_count):
             summary += str(sentence)
         return summary
 
