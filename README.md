@@ -1,6 +1,6 @@
 # Text Summarization
 
-# Introduction
+## Introduction
 
 This repository contains scripts about automatic text synthesis and related methods to measure the goodness of the algorithmically obtained summary.
 
@@ -26,3 +26,22 @@ First of all install all the libraries required by python with the command `pip3
 Download the dataset from here: **AGGIUNGI LINK QUI**.
 
 After all, launch the scripts contained into the folders.
+
+## Text Summarization Algorithms
+In the following table are listed all the summarization algorithms used during the experiments.
+
+| Algorithm | Approach    | Kind                          |
+|-----------|-------------|-------------------------------|
+| BERT      | Extractive  |                               |
+| KL_SUM    | Extractive  |                               |
+| LEXRANK   | Extractive  |                               |
+| LSA       | Extractive  |                               |
+| LUHN      | Extractive  | Frequency-Based Summarization |
+| TEXTRANK  | Extractive  |                               |
+| T5        | Abstractive |                               |
+| BART      | Abstractive |                               |
+
+## Sumary Evaluation Algorithms
+In the following table are listed all the evaluation algorithms used during the experiments.
+
+`// TODO`
