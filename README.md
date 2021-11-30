@@ -25,6 +25,8 @@ First of all install all the libraries required by python with the command `pip3
 
 Download the dataset from [here](https://drive.google.com/file/d/1iAcqK6sOK_kMYJn4kptVJA2QpTJoqk--/view?usp=sharing) and move it into the **datasets** folder.
 
+You can also download the ScisummNet dataset from [here](https://cs.stanford.edu/~myasu/projects/scisumm_net/scisummnet_release1.1__20190413.zip) and after you can convert it with the `top1000.converter.py` script.
+
 After all, launch the scripts contained into the folders.
 
 ## Text Summarization Algorithms
