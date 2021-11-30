@@ -1,3 +1,9 @@
+'''
+This script convert the ScisummNet top1000 dataset in a format compatible with
+the datasets used in the mine experiments.
+The dataset can be downloaded from here
+https://cs.stanford.edu/~myasu/projects/scisumm_net/scisummnet_release1.1__20190413.zip
+'''
 import xml.etree.ElementTree as ET
 import os
 import pandas
