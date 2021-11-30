@@ -17,7 +17,7 @@ def run_abstractive(input_path, output_path):
 
     original_texts = dataset['original_texts'].fillna(" ").to_list()
 
-    # executing BERT
+    # executing BART
     from abstractive.BART.BART import BART
     dataset['bart'] = BART().multi_apply(original_texts, verbose=True)
 
