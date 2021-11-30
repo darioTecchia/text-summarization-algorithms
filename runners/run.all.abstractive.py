@@ -23,7 +23,7 @@ def run_abstractive(input_path, output_path):
 
     # executing KL_SUM
     from abstractive.T5.T5 import T5
-    dataset['kl_sum'] = T5().multi_apply(original_texts, verbose=True)
+    dataset['t5'] = T5().multi_apply(original_texts, verbose=True)
 
     dataset.to_csv(output_path, index=False)
     print('file written to ' + os.path.abspath(output_path))
