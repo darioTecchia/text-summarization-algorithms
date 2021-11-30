@@ -12,6 +12,7 @@ class BART:
         self.model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
     def apply(self, original_text = "", return_tensors = 'pt'):
+        original_text = original_text[:1024]
         # Encoding the inputs and passing them to model.generate()
         inputs = self.tokenizer.batch_encode_plus([original_text], return_tensors = return_tensors)
         summary_ids = self.model.generate(inputs['input_ids'], early_stopping=True)
