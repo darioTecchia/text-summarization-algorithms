@@ -14,7 +14,6 @@ def run(input_path, output_path, algorithms):
     print('Running: ')
     print(*algorithms, sep = ", ") 
     print('Reading dataset from ' + os.path.abspath(input_path))
-    print('\n')
 
     dataset = pandas.read_csv(input_path).truncate(after=config.SUMMARIES_CHUNK - 1)
 
