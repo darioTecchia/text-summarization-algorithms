@@ -1,6 +1,3 @@
-from extractive.luhn.luhn import Luhn
-
-
 def get_summarizer(algorithm):
     if(algorithm == 'bert'):
         from extractive.bert.Bert import BERT
