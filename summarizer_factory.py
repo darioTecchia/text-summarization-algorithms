@@ -1,18 +1,21 @@
+from extractive.luhn.luhn import Luhn
+
+
 def get_summarizer(algorithm):
     if(algorithm == 'bert'):
-        from extractive.bert.bert import BERT
+        from extractive.bert.Bert import BERT
         return BERT
     elif(algorithm == 'kl_sum'):
-        from extractive.kl_sum.kl_sum import KLSum
+        from extractive.kl_sum.KlSum import KLSum
         return KLSum
     elif(algorithm == 'lexrank'):
-        from extractive.lexrank.lexrank import LexRank
+        from extractive.lexrank.LexRank import LexRank
         return LexRank
     elif(algorithm == 'lsa'):
-        from extractive.lsa.lsa import LSA
+        from extractive.lsa.LSA import LSA
         return LSA
     elif(algorithm == 'luhn'):
-        from extractive.luhn.luhn import Luhn
+        from extractive.luhn.Luhn import Luhn
         return Luhn
     elif(algorithm == 'bart'):
         from abstractive.BART.BART import BART
