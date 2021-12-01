@@ -26,7 +26,7 @@ def run(input_path, output_path, algorithms):
     dataset.to_csv(output_path, index=False)
 
     print('Summaries file written to ' + os.path.abspath(output_path))
-    print('#######\n')
+    print('######## END ########\n')
 
     return dataset
 
