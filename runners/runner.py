@@ -26,12 +26,10 @@ def run(input_path, output_path, algorithms):
     dataset.to_csv(output_path, index=False)
 
     print('Summaries file written to ' + os.path.abspath(output_path))
-    print('\n')
+    print('#######\n')
 
     return dataset
 
 import config
 
 run('../datasets/news.csv', '../outputs/extractive.news.summaries.csv', config.EXTRACTIVE_ALGORITHMS)
-run('../datasets/news.csv', '../outputs/abstractive.news.summaries.csv', config.ABSTRACTIVE_ALGORITHMS)
-run('../datasets/news.csv', '../outputs/all.news.summaries.csv', config.All_ALGORITHMS)
