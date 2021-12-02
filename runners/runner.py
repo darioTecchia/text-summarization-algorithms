@@ -31,5 +31,3 @@ def run(input_path, output_path, algorithms):
     return dataset
 
 import config
-
-run('../datasets/news.csv', '../outputs/extractive.news.summaries.csv', config.EXTRACTIVE_ALGORITHMS)

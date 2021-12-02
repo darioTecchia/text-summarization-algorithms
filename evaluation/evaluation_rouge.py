@@ -50,6 +50,3 @@ def run_rouge(input_path, output_path):
     print('File written to ' + os.path.abspath(output_path + '.rouge_2.csv'))
     print('File written to ' + os.path.abspath(output_path + '.rouge_l.csv'))
     print('######## END ########\n')
-
-# run_rouge("../outputs/all.reviews.summaries.csv", "../outputs/evaluation.reviews.rouge")
-run_rouge("../outputs/all.news.summaries.csv", "../outputs/evaluation.news.rouge")

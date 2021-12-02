@@ -31,6 +31,3 @@ def run_bert(input_path, output_path):
     pandas.DataFrame(results).to_csv(output_path + '.csv', index=False)
     print('File written to ' + os.path.abspath(output_path + '.csv'))
     print('######## END ########\n')
-
-# run_bert("../outputs/all.reviews.summaries.csv", "../outputs/evaluation.reviews.bert")
-run_bert("../outputs/all.news.summaries.csv", "../outputs/evaluation.news.bert")

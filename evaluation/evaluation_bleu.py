@@ -32,6 +32,3 @@ def run_bleu(input_path, output_path):
     pandas.DataFrame(results).to_csv(output_path + '.csv', index=False)
     print('File written to ' + os.path.abspath(output_path + '.csv'))
     print('######## END ########\n')
-
-# run_bleu("../outputs/all.reviews.summaries.csv", "../outputs/evaluation.reviews.bleu")
-run_bleu("../outputs/all.news.summaries.csv", "../outputs/evaluation.news.bleu")
