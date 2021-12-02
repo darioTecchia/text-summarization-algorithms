@@ -24,7 +24,7 @@ def run_rouge(input_path, output_path):
     results_2 = dict()
     results_l = dict()
 
-    for algorithm in config.SUMMARIZATION_ALGORITHMS:
+    for algorithm in config.All_ALGORITHMS:
         print('Evalutating ' + algorithm)
         summaries = dataset[algorithm].fillna(" ").to_list()
 

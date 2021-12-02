@@ -18,12 +18,12 @@ def run_bleu(input_path, output_path):
 
     results = dict()
 
-    for algorithm in config.SUMMARIZATION_ALGORITHMS:
+    for algorithm in config.All_ALGORITHMS:
         results[algorithm + '_bleu'] = []
 
     for row in dataset.to_dict('records'):
         human_summary = row['human_summaries']
-        for algorithm in config.SUMMARIZATION_ALGORITHMS:
+        for algorithm in config.All_ALGORITHMS:
             print('Evalutating ' + algorithm)
             summary = row[algorithm]
             bleu_score = sentence_bleu([human_summary.split()], summary.split())

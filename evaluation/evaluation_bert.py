@@ -20,7 +20,7 @@ def run_bert(input_path, output_path):
 
     results = dict()
 
-    for algorithm in config.SUMMARIZATION_ALGORITHMS:
+    for algorithm in config.All_ALGORITHMS:
         print('Evalutating ' + algorithm)
         summaries = dataset[algorithm].fillna(" ").to_list()
         P, R, F1 = score(summaries, human_summaries, lang="en", verbose=True)
