@@ -14,7 +14,7 @@ sys.path.append('..')
 import config
 
 def run_rouge(input_path, output_path):
-    print('reading ' + os.path.abspath(input_path))
+    print('Reading dataset from ' + os.path.abspath(input_path))
 
     dataset = pandas.read_csv(input_path).truncate(after=config.SUMMARIES_CHUNK - 1)
 
@@ -25,7 +25,7 @@ def run_rouge(input_path, output_path):
     results_l = dict()
 
     for algorithm in config.SUMMARIZATION_ALGORITHMS:
-        print('evalutating ' + algorithm)
+        print('Evalutating ' + algorithm)
         summaries = dataset[algorithm].fillna(" ").to_list()
 
         rouge_score = rouge.get_scores(summaries, human_summaries)
@@ -46,9 +46,10 @@ def run_rouge(input_path, output_path):
     pandas.DataFrame(results_2).to_csv(output_path + '.rouge_2.csv', index=False)
     pandas.DataFrame(results_l).to_csv(output_path + '.rouge_l.csv', index=False)
 
-    print('file written to ' + os.path.abspath(output_path + '.rouge_1.csv'))
-    print('file written to ' + os.path.abspath(output_path + '.rouge_2.csv'))
-    print('file written to ' + os.path.abspath(output_path + '.rouge_l.csv'))
+    print('File written to ' + os.path.abspath(output_path + '.rouge_1.csv'))
+    print('File written to ' + os.path.abspath(output_path + '.rouge_2.csv'))
+    print('File written to ' + os.path.abspath(output_path + '.rouge_l.csv'))
+    print('######## END ########\n')
 
 # run_rouge("../outputs/all.reviews.summaries.csv", "../outputs/evaluation.reviews.rouge")
 run_rouge("../outputs/all.news.summaries.csv", "../outputs/evaluation.news.rouge")

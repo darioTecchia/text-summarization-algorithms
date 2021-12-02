@@ -13,7 +13,7 @@ sys.path.append('..')
 import config
 
 def run_bleu(input_path, output_path):
-    print('reading ' + os.path.abspath(input_path))
+    print('Reading dataset from ' + os.path.abspath(input_path))
     dataset = pandas.read_csv(input_path, header=0).truncate(after=config.SUMMARIES_CHUNK - 1)
 
     results = dict()
@@ -24,13 +24,14 @@ def run_bleu(input_path, output_path):
     for row in dataset.to_dict('records'):
         human_summary = row['human_summaries']
         for algorithm in config.SUMMARIZATION_ALGORITHMS:
-            print('evalutating ' + algorithm)
+            print('Evalutating ' + algorithm)
             summary = row[algorithm]
             bleu_score = sentence_bleu([human_summary.split()], summary.split())
             results[algorithm + '_bleu'].append(bleu_score)
 
     pandas.DataFrame(results).to_csv(output_path + '.csv', index=False)
-    print('file written to ' + os.path.abspath(output_path + '.csv'))
+    print('File written to ' + os.path.abspath(output_path + '.csv'))
+    print('######## END ########\n')
 
 # run_bleu("../outputs/all.reviews.summaries.csv", "../outputs/evaluation.reviews.bleu")
 run_bleu("../outputs/all.news.summaries.csv", "../outputs/evaluation.news.bleu")
