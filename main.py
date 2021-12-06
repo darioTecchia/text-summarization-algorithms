@@ -4,19 +4,26 @@ import config
 # run('datasets/news.csv', 'outputs/all.news.summaries.csv', config.All_ALGORITHMS)
 # run('datasets/reviews.csv', 'outputs/all.reviews.summaries.csv', config.All_ALGORITHMS)
 
-from evaluation.evaluation_bert import run_bert
-from evaluation.evaluation_bleu import run_bleu
-from evaluation.evaluation_rouge import run_rouge
-from evaluation.evaluation_rouge_we import run_rouge_we
+from evaluation.Bert import Bert
+bert = Bert(config.All_ALGORITHMS, config.SUMMARIES_CHUNK)
 
-# run_bert("outputs/all.news.summaries.csv", "outputs/evaluation.news.bert")
-# run_bert("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.bert")
+bert.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.bert")
+bert.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.bert")
 
-# run_bleu("outputs/all.news.summaries.csv", "outputs/evaluation.news.bleu")
-# run_bleu("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.bleu")
+from evaluation.Bleu import Bleu
+bleu = Bleu(config.All_ALGORITHMS, config.SUMMARIES_CHUNK)
 
-# run_rouge("outputs/all.news.summaries.csv", "outputs/evaluation.news.rouge")
-# run_rouge("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.rouge")
+bleu.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.bleu")
+bleu.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.bleu")
 
-run_rouge_we("outputs/all.news.summaries.csv", "outputs/evaluation.news.rouge_we")
-run_rouge_we("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.rouge_we")
+from evaluation.Rouge import Rouge
+rouge = Rouge(config.All_ALGORITHMS, config.SUMMARIES_CHUNK)
+
+rouge.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.rouge")
+rouge.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.rouge")
+
+from evaluation.RougeWe import RougeWe
+rouge_we = RougeWe(config.All_ALGORITHMS, config.SUMMARIES_CHUNK)
+
+rouge_we.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.rouge_we")
+rouge_we.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.rouge_we")

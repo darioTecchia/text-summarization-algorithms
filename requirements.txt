@@ -11,3 +11,4 @@ rouge
 bert_score
 bert-extractive-summarizer
 pandas
+moverscore
