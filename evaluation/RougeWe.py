@@ -7,7 +7,10 @@ class RougeWe(Metric):
     def __init__(self, algorithms=[], chunk_size = 5, n_gram=3, tokenize=True):
         self.algorithms = algorithms
         self.chunk_size = chunk_size
-        self.dirname = os.path.self.dirname(__file__)
+        self.n_gram = n_gram
+        self.tokenize = tokenize
+
+        self.dirname = os.path.dirname(__file__)
         if not os.path.exists(os.path.join(self.dirname, "../resources")):
             os.mkdir(os.path.join(self.dirname, "../resources"))
         if not os.path.exists(os.path.join(self.dirname, "../resources/deps.words")):
