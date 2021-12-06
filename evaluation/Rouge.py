@@ -1,18 +1,16 @@
-from rouge import Rouge
-
 from evaluation.metric import Metric
 
-import pandas, os
+import pandas, os, rouge
 
 from transformers import logging
 logging.set_verbosity_error()
 
-class RougeWe(Metric):
+class Rouge(Metric):
 
     def __init__(self, algorithms=[], chunk_size = 5):
         self.algorithms = algorithms
         self.chunk_size = chunk_size
-        self.rouge = Rouge()
+        self.rouge = rouge.Rouge()
 
     def run(self, input_path, output_path):
         print('Reading dataset from ' + os.path.abspath(input_path))
