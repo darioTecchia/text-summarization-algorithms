@@ -1,5 +1,5 @@
 # Text Summarization
-[![Python 3.9.6](https://img.shields.io/badge/python-3.9.6-blue.svg)](https://www.python.org/downloads/release/python-396/)
+[![Python 3.9.9](https://img.shields.io/badge/python-3.9.9-blue.svg)](https://www.python.org/downloads/release/python-399/)
 
 ## Introduction
 
