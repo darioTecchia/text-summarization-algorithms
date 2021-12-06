@@ -1,4 +1,4 @@
 SUMMARIES_CHUNK=5
-EXTRACTIVE_ALGORITHMS = ['bert', 'kl_sum', 'lexrank', 'lsa', 'luhn']
+EXTRACTIVE_ALGORITHMS = ['bert_ext', 'kl_sum', 'lexrank', 'lsa', 'luhn']
 ABSTRACTIVE_ALGORITHMS = ['bart', 't5']
 All_ALGORITHMS = EXTRACTIVE_ALGORITHMS + ABSTRACTIVE_ALGORITHMS
