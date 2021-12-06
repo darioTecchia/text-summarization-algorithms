@@ -15,17 +15,17 @@ def run_rouge_we(input_path, output_path, n_gram=3, tokenize=True):
     print('Reading dataset from ' + os.path.abspath(input_path))
     dataset = pandas.read_csv(input_path, header=0).truncate(after=config.SUMMARIES_CHUNK - 1)
 
-    if not os.path.exists(os.path.join(dirname, "embeddings")):
-        os.mkdir(os.path.join(dirname, "embeddings"))
-    if not os.path.exists(os.path.join(dirname, "embeddings/deps.words")):
+    if not os.path.exists(os.path.join(dirname, "../resources")):
+        os.mkdir(os.path.join(dirname, "../resources"))
+    if not os.path.exists(os.path.join(dirname, "../resources/deps.words")):
         print("Downloading the embeddings; this may take a while")
         url = "http://u.cs.biu.ac.il/~yogo/data/syntemb/deps.words.bz2"
         r = requests.get(url)
         d = bz2.decompress(r.content)
-        with open(os.path.join(dirname, "embeddings/deps.words"), "wb") as outputf:
+        with open(os.path.join(dirname, "../resources/deps.words"), "wb") as outputf:
             outputf.write(d)
 
-    word_embeddings = load_embeddings(os.path.join(dirname, './embeddings/deps.words'))
+    word_embeddings = load_embeddings(os.path.join(dirname, '../resources/deps.words'))
 
     results = dict()
 

@@ -3,4 +3,4 @@ __pycache__/
 outputs/*
 datasets/*
 summ_eval/
-evaluation/embeddings/deps.words
+resources/*
