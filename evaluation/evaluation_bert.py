@@ -23,7 +23,7 @@ def run_bert(input_path, output_path):
     for algorithm in config.All_ALGORITHMS:
         print('Evalutating ' + algorithm)
         summaries = dataset[algorithm].fillna(" ").to_list()
-        P, R, F1 = score(summaries, human_summaries, lang="en", verbose=True)
+        P, R, F1 = score(summaries, human_summaries, lang="en", verbose=True, model_type='bert-base-uncased')
         results[algorithm + '_precision'] = P
         results[algorithm + '_recall'] = R
         results[algorithm + '_F1'] = F1
