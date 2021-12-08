@@ -1,5 +1,5 @@
 def get_summarizer(algorithm):
-    if(algorithm == 'bert'):
+    if(algorithm == 'bert_ext'):
         from extractive.bert.Bert import BERT
         return BERT
     elif(algorithm == 'kl_sum'):
