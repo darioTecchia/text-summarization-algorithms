@@ -30,7 +30,8 @@ if __name__ == '__main__':
     # rouge_we.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.rouge_we")
 
     from evaluation.MoverScore import MoverScore
-    mover_score = MoverScore(config.All_ALGORITHMS, config.SUMMARIES_CHUNK)
+    mover_score = MoverScore(config.All_ALGORITHMS, config.SUMMARIES_CHUNK, version=1)
 
-    mover_score.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.mover_score")
     mover_score.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.mover_score")
+    mover_score.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.mover_score")
+    

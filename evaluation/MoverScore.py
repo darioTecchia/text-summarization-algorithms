@@ -2,6 +2,8 @@ import pandas, os, numpy
 from transformers import logging
 from evaluation.metric import Metric
 
+from collections import defaultdict
+
 logging.set_verbosity_error()
 
 dirname = os.path.dirname(__file__)
@@ -10,7 +12,7 @@ class MoverScore(Metric):
 
     def __init__(self, algorithms = [], chunk_size = 5, version=2, \
                 stop_wordsf=os.path.join(dirname, '../resources/stopwords.txt'), \
-                n_gram=1, remove_subwords=True, batch_size=48):
+                n_gram=1, remove_subwords=True, batch_size=48, aggregate=True):
         self.algorithms = algorithms
         self.chunk_size = chunk_size
         self.version = version
@@ -28,41 +30,26 @@ class MoverScore(Metric):
         self.n_gram = n_gram
         self.remove_subwords = remove_subwords
         self.batch_size = batch_size
+        self.idf_dict_ref = defaultdict(lambda: 1.)
+        self.idf_dict_hyp = defaultdict(lambda: 1.)
 
     def run(self, input_path, output_path):
         print('Reading dataset from ' + os.path.abspath(input_path))
-        dataset = pandas.read_csv(input_path).truncate(after=self.chunk_size)
+        dataset = pandas.read_csv(input_path, header=0).truncate(after=self.chunk_size)
 
         results = dict()
 
-        human_summaries = dataset['human_summaries'].fillna(" ").to_list()
-
         for algorithm in self.algorithms:
+            results[algorithm + '_bleu'] = []
 
-            print('Evalutating ' + algorithm)
-            summaries = dataset[algorithm].fillna(" ").to_list()
-
-            refs = human_summaries
-            if isinstance(human_summaries[0], list):
-                refs = [" ".join(ref) for ref in human_summaries]
-                
-            idf_dict_summ = self.get_idf_dict(summaries)
-            idf_dict_ref = self.get_idf_dict(refs)
-            scores = []
-            if isinstance(human_summaries[0], list):
-                for reference, summary in zip(human_summaries, summaries):
-                    s = self.word_mover_score(reference, [summary]*len(reference), idf_dict_ref, idf_dict_summ, \
-                            stop_words=self.stop_words, n_gram=self.n_gram, remove_subwords=self.remove_subwords,\
-                            batch_size=self.batch_size)
-                    scores.append(numpy.mean(s))
-            else:
-                scores = self.word_mover_score(human_summaries, summaries, idf_dict_ref, idf_dict_summ, \
-                                stop_words=self.stop_words, n_gram=self.n_gram, remove_subwords=self.remove_subwords,\
-                                batch_size=self.batch_size)
-
-            
-            score_dict = [{"mover_score" : score} for score in scores]
-            print(score_dict)
+        for row in dataset.to_dict('records'):
+            human_summary = row['human_summaries'][:512]
+            for algorithm in self.algorithms:
+                print('Evalutating ' + algorithm)
+                summary = row[algorithm][:512]
+                score = self.word_mover_score([human_summary], [summary], self.idf_dict_ref, self.idf_dict_hyp, self.stop_words,
+                                        n_gram=1, remove_subwords=True)
+                results[algorithm + '_bleu'].append(score[0])
 
         pandas.DataFrame(results).to_csv(output_path + '.csv', index=False)
         print('File written to ' + os.path.abspath(output_path + '.csv'))
