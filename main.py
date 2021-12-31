@@ -1,3 +1,4 @@
+from evaluation.S3 import S3Metric
 from runners.runner import run
 import config
 
@@ -29,9 +30,15 @@ if __name__ == '__main__':
     # rouge_we.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.rouge_we")
     # rouge_we.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.rouge_we")
 
-    from evaluation.MoverScore import MoverScore
-    mover_score = MoverScore(config.All_ALGORITHMS, config.SUMMARIES_CHUNK, version=1)
+    # from evaluation.MoverScore import MoverScore
+    # mover_score = MoverScore(config.All_ALGORITHMS, config.SUMMARIES_CHUNK, version=1)
 
-    mover_score.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.mover_score")
-    mover_score.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.mover_score")
+    # mover_score.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.mover_score")
+    # mover_score.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.mover_score")
+
+    from evaluation.S3 import S3
+    s3 = S3Metric(config.All_ALGORITHMS, config.SUMMARIES_CHUNK)
+
+    s3.run("outputs/all.reviews.summaries.csv", "outputs/evaluation.reviews.s3")
+    s3.run("outputs/all.news.summaries.csv", "outputs/evaluation.news.s3")
     
